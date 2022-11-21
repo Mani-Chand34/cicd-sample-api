@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="9a416abd-64ba-4c6f-b080-b51b39377d7b" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="github-cicd-sample-apiFlow" doc:id="16b3e1bc-154e-46e3-9d3a-6fcf2f7dc8b4" >
+		<http:listener doc:name="Listener" doc:id="f33de604-6857-4bca-9fe9-029dc7df4335" config-ref="HTTP_Listener_config" path="/sample"/>
+		<set-payload value='#["Successful"]' doc:name="Set Payload" doc:id="ff613832-8466-4a82-a303-a14d7264fcde" />
+		<logger level="INFO" doc:name="Logger" doc:id="89e8f2d0-f67b-4f50-ae9b-397d76bc9fa5" message='#["Payload Success"]'/>
+	</flow>
+</mule>
